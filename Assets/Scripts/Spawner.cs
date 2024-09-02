@@ -22,7 +22,9 @@ public class Spawner : MonoBehaviour
     private int enemyMoveSpeed;
     private Enemies enemies;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Invokes all of the methods at the start of the game
+    /// </summary>
     void Start()
     {
         InvokeRepeating("ChooseEnemy", 0f, spawnRate);
@@ -31,6 +33,9 @@ public class Spawner : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Spawns enemies based on variables
+    /// </summary>
     public void Spawn()
     {
       GameObject ChosenOne = Instantiate(choice, targetPlacement.transform.position, Quaternion.identity);
@@ -38,6 +43,9 @@ public class Spawner : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// chooses a lane for an enemy to spawn in
+    /// </summary>
     public void ChooseLane()
     {
         spawnPosition = Random.Range(1, 6);
@@ -63,6 +71,9 @@ public class Spawner : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// chooses an enemy to spawn in
+    /// </summary>
     public void ChooseEnemy()
     {
         enemyChoice = Random.Range(1, 4);
@@ -83,14 +94,13 @@ public class Spawner : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// When the game ends, stops spawning things
+    /// </summary>
     public void GameOver()
     {
         CancelInvoke();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

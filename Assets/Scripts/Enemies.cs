@@ -19,6 +19,9 @@ public class Enemies : MonoBehaviour
     public Animator snakeAnimator;
     public Animator snailAnimator;
 
+    /// <summary>
+    /// sets the health for enemies
+    /// </summary>
     void Start()
     {
         snailHealth = 5;
@@ -26,6 +29,9 @@ public class Enemies : MonoBehaviour
         controller = GameObject.FindObjectOfType<GameController>();
     }
 
+    /// <summary>
+    /// if the enemies go too far, takes a life and destroys the enemies
+    /// </summary>
     public void FixedUpdate()
     {
         if(snake.transform.position.x < -10 || snail.transform.position.x < -10 || slime.transform.position.x < -10)
@@ -35,6 +41,10 @@ public class Enemies : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// determines what enemy collides with the bullet then destroys/damages accordingly
+    /// </summary>
+    /// <param name="other"></param>
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Bullet" && gameObject.tag == "Snake")
@@ -80,12 +90,4 @@ public class Enemies : MonoBehaviour
             controller.LoseALife();
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
 }

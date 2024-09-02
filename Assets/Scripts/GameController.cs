@@ -39,7 +39,9 @@ public class GameController : MonoBehaviour
 
     public AudioClip deathSound;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Makes the inputs register and turns off text
+    /// </summary>
     void Start()
     {
         playerInput.currentActionMap.Enable();
@@ -62,11 +64,19 @@ public class GameController : MonoBehaviour
         endGameText.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Restarts on button press
+    /// </summary>
+    /// <param name="obj"></param>
     private void Restart_started(InputAction.CallbackContext obj)
     {
         SceneManager.LoadScene(0);
     }
 
+    /// <summary>
+    /// Puts a timer when shooting to prevent spam
+    /// </summary>
+    /// <param name="obj"></param>
     private void Shoot_started(InputAction.CallbackContext obj)
     {
         if (fireCounter == 1)
@@ -80,21 +90,36 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// quits on button press
+    /// </summary>
+    /// <param name="obj"></param>
     private void Quit_started(InputAction.CallbackContext obj)
     {
         Application.Quit();
     }
 
+    /// <summary>
+    /// makes bool false when not moving
+    /// </summary>
+    /// <param name="obj"></param>
     private void Move_canceled(InputAction.CallbackContext obj)
     {
         isMoving = false;
     }
 
+    /// <summary>
+    /// makes bool true when moving
+    /// </summary>
+    /// <param name="obj"></param>
     private void Move_started(InputAction.CallbackContext obj)
     {
         isMoving = true;
     }
 
+    /// <summary>
+    /// Loses a life and kills when hit
+    /// </summary>
     public void LoseALife()
     {
         lifeCounter--;
@@ -113,13 +138,18 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// updates score based on enemies killed
+    /// </summary>
     public void UpdateScore()
     {
         score += 100;
         scoreText.text = "Score: " + score.ToString();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// checks if moving and firing and does actions based on such
+    /// </summary>
     private void FixedUpdate()
     {
         if (isMoving)
@@ -139,6 +169,9 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// moves and fires if moving/firing and saves highscore
+    /// </summary>
     void Update()
     {
         if(isMoving)
