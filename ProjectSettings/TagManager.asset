@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - Enemy
+  - Tank
+  - Snake
+  - Slime
+  - Snail
   layers:
   - Default
   - TransparentFX
@@ -14,9 +19,9 @@ TagManager:
   - UI
   - Tank
   - Bullet
-  - 
-  - 
-  - 
+  - Snake
+  - Snail
+  - Slime
   - 
   - 
   - 
